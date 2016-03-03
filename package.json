@@ -1,0 +1,31 @@
+{
+  "name": "gulp-json-modify",
+  "description": "Modify data on a JSON path using Gulp (gulpjs.com)",
+  "version": "1.0.0",
+  "homepage": "http://github.com/olioex/gulp-json-modify",
+  "repository": "git://github.com/olioex/gulp-json-modify.git",
+  "author": "Lloyd Watkin <lloyd@olioex.com (http://olioex.com)",
+  "main": "./index.js",
+  "dependencies": {
+    "dot-object": "^1.2.0",
+    "plugin-error": "^0.1.2",
+    "plugin-log": "^0.1.0",
+    "through2": "^0.5.1"
+  },
+  "scripts": {
+    "test": "echo 'TBC :(' && exit 0"
+  },
+  "engines": {
+    "node": ">= 0.9.0"
+  },
+  "keywords": [
+    "gulp",
+    "gulpplugin",
+    "version",
+    "versioning",
+    "gulp-version",
+    "gulp-plugin",
+    "json"
+  ],
+  "license": "MIT"
+}
