@@ -1,6 +1,6 @@
 # gulp-json-modify
 
-[![Build Status](https://travis-ci.org/olioex/gulp-json-modify.png?branch=master)](https://travis-ci.org/olioex/gulp-json-modify)
+[![Build Status](https://travis-ci.org/OLIOEX/gulp-json-modify.png?branch=master)](https://travis-ci.org/OLIOEX/gulp-json-modify)
 
 [![NPM version](https://badge.fury.io/js/gulp-json-modify.png)](http://badge.fury.io/js/gulp-json-modify)
 
