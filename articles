@@ -1,0 +1,18 @@
+SELECT 
+ articles.id,
+ articles.title,
+ articles.created_at,
+ article_transitions.to_state as status,
+ articles.price,
+ users.ambassador,
+ users.merchant,
+ users.community_lead,
+ users.email
+FROM
+ articles,
+ article_transitions,
+ users
+WHERE
+ articles.user_id = users.id
+ AND articles.id = article_transitions.article_id
+ AND article_transitions.most_recent = 1;

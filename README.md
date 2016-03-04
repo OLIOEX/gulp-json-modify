@@ -17,87 +17,16 @@ $ npm install gulp-json-modify --save
 ## Example
 
 ```js
-var gulp = require('gulp')
-var jsonModify = require('gulp-json-modify')
-
-// Basic usage:
-// Will patch the version
-gulp.task('jsonModify', function(){
-  gulp.src('./component.json')
-  .pipe(jsonModify())
-  .pipe(gulp.dest('./'))
-})
-
-// Defined method of updating:
-// Semantic
-gulp.task('jsonModify', function(){
-  gulp.src('./*.json')
-  .pipe(jsonModify({type:'minor'}))
-  .pipe(gulp.dest('./'))
-})
-
-// Defined method of updating:
-// Semantic major
-gulp.task('jsonModify', function(){
-  gulp.src('./bower.json')
-  .pipe(jsonModify({type:'major'}))
-  .pipe(gulp.dest('./'))
-})
-
-// Defined method of updating:
-// Set a specific version
-gulp.task('jsonModify', function(){
-  gulp.src('./*.json')
-  .pipe(jsonModify({version: '1.2.3'}))
-  .pipe(gulp.dest('./'))
-})
-
-// Update bower, component, npm at once:
-gulp.task('jsonModify', function(){
-  gulp.src(['./bower.json', './component.json', './package.json'])
-  .pipe(jsonModify({type:'major'}))
-  .pipe(gulp.dest('./'))
-})
-
-// Override the tab size for indenting
-// (or simply omit to keep the current formatting)
-gulp.task('jsonModify', function(){
-  gulp.src('./package.json')
-  .pipe(jsonModify({ indent: 4 }))
-  .pipe(gulp.dest('./'))
-})
-
-// Define the key for versioning off
-gulp.task('jsonModify', function(){
-  gulp.src('./package.json')
-  .pipe(jsonModify({key: "appversion"}))
-  .pipe(gulp.dest('./'))
-})
-
-
-```
-#### jsonModifying version and outputting different files
-```js
-// `fs` is used instead of require to prevent caching in watch (require caches)
-var fs = require('fs')
-var semver = require('semver')
-
-var getPackageJson = function () {
-  return JSON.parse(fs.readFileSync('./package.json', 'utf8'))
-}
-
 // jsonModify data in multiple files
 gulp.task('jsonModify', function () {
 
-  return gulp.src(['./bower.json', './package.json', './src/manifest.json'])
+  return gulp.src([ './bower.json', './package.json' ])
     .pipe(tasks.jsonModify({
-      key: 'version', value: '1.0.0'
+      key: 'version',
+      value: '1.0.0'
     }))
-    .pipe(manifestFilter)
-    .pipe(gulp.dest('./src'))
-    .pipe(manifestFilter.restore())
-    .pipe(regularJsons)
     .pipe(gulp.dest('./'))
+
 })
 
 // Run the gulp tasks
@@ -105,8 +34,6 @@ gulp.task('default', function(){
   gulp.run('jsonModify')
 })
 ```
-
-####You can view more examples in the [example folder.](https://github.com/stevelacy/gulp-json-modify/tree/master/examples)
 
 ## Options
 
