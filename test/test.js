@@ -39,13 +39,25 @@ describe('JSON Modify', function() {
       output.write(fakeFile)
     })
 
-    it('should replace complex key', function (done) {
+    it('should replace complex key', function(done) {
       var output = jsonModify({ key: 'subkey.key1', value: 'newValue' })
 
       output.once('data', function(newFile) {
         var json = JSON.parse(String(newFile.contents))
         json.key1.should.equal('value1')
         json.subkey.key1.should.equal('newValue')
+        done()
+      })
+      output.write(fakeFile)
+    })
+
+    it('should work with a falsey value', function(done) {
+      var output = jsonModify({ key: 'subkey.key1', value: false })
+
+      output.once('data', function(newFile) {
+        var json = JSON.parse(String(newFile.contents))
+        json.key1.should.equal('value1')
+        json.subkey.key1.should.equal(false)
         done()
       })
       output.write(fakeFile)

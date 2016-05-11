@@ -26,7 +26,7 @@ module.exports = function(opts) {
         { fileName: file.path, showStack: true }
       ))
     }
-    if (!opts.value) {
+    if (typeof opts.value === 'undefined') {
       return cb(new pluginError(
         'gulp-json-modify',
         'Missing "value" option',
