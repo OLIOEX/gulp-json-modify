@@ -17,6 +17,8 @@ $ npm install gulp-json-modify --save
 ## Example
 
 ```js
+var jsonModify = require("gulp-json-modify");
+
 // jsonModify data in multiple files
 gulp.task('jsonModify', function () {
 
