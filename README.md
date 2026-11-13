@@ -1,75 +1,85 @@
 # gulp-json-modify
 
-[![Build Status](https://travis-ci.org/OLIOEX/gulp-json-modify.png?branch=master)](https://travis-ci.org/OLIOEX/gulp-json-modify)
+[![CI](https://github.com/OLIOEX/gulp-json-modify/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/OLIOEX/gulp-json-modify/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/gulp-json-modify.svg)](https://www.npmjs.com/package/gulp-json-modify)
 
-[![NPM version](https://badge.fury.io/js/gulp-json-modify.png)](http://badge.fury.io/js/gulp-json-modify)
+> Modify a value in a JSON file using [gulp](https://gulpjs.com)
 
-> Replace data in a JSON file with something else
+## Install
+
+Requires Node.js 20 or later.
+
+```bash
+npm install --save-dev gulp-json-modify
+```
 
 ## Usage
 
-#### Install
-
-```bash
-$ npm install gulp-json-modify --save
-```
-
-## Example
-
 ```js
-// jsonModify data in multiple files
-gulp.task('jsonModify', function () {
+const { src, dest } = require('gulp')
+const jsonModify = require('gulp-json-modify')
 
-  return gulp.src([ './bower.json', './package.json' ])
-    .pipe(tasks.jsonModify({
+function setVersion() {
+  return src(['./bower.json', './package.json'])
+    .pipe(jsonModify({
       key: 'version',
       value: '1.0.0'
     }))
-    .pipe(gulp.dest('./'))
+    .pipe(dest('./'))
+}
 
-})
-
-// Run the gulp tasks
-gulp.task('default', function(){
-  gulp.run('jsonModify')
-})
+exports.default = setVersion
 ```
 
 ## Options
 
-* **key**: key to replace (required)
-* **value**: set to value (required)
+### key
 
-Example:
+Type: `string` (required)
 
-```js
-.pipe(jsonModify({ key: 'app_id', value: '1234' })
-```
-
-##### Dot notation is supported for sub-keys
+The key to set. Use dot notation to set nested keys:
 
 ```js
-
 .pipe(jsonModify({ key: 'key.subkey', value: 'set-me-to' }))
 
 /*
 {
   "key": {
-    "subkey": "<value>"
+    "subkey": "set-me-to"
   }
 }
 */
 ```
 
-### options.indent
+Missing intermediate objects are created.
 
-Set the amount of spaces for indentation in the result JSON file.
+### value
 
-## /ht
+Type: any JSON-serialisable value (required)
 
-https://github.com/stevelacy/gulp-bump
+The value to set. Falsy values such as `false`, `0` and `''` are allowed; only `undefined` is rejected.
 
-## LICENSE
+### indent
+
+Type: `number | string`
+
+The indentation passed to `JSON.stringify`. By default, the plugin detects the indentation already used in the file (tabs or spaces) and keeps it. A trailing newline is also kept if the file had one.
+
+## Releasing
+
+Releases are published to npm by GitHub Actions ([`publish.yml`](.github/workflows/publish.yml)) using npm trusted publishing.
+
+1. Bump the version and tag it: `npm version patch` (or `minor` / `major`)
+2. Push the commit and tag: `git push --follow-tags`
+3. Create a GitHub Release from the new `vX.Y.Z` tag. Publishing the release triggers the npm publish.
+
+The workflow fails if the release tag does not match the version in `package.json`.
+
+## Credits
+
+Based on [gulp-bump](https://github.com/stevelacy/gulp-bump).
+
+## License
 
 (MIT License)
 
