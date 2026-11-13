@@ -21,7 +21,7 @@ describe('JSON Modify', function() {
       base: 'test/',
       cwd: 'test/',
       path: 'test/test-file.json',
-      contents: new Buffer(JSON.stringify(dotObject, null, 2))
+      contents: Buffer.from(JSON.stringify(dotObject, null, 2))
     })
   })
 
@@ -69,7 +69,7 @@ describe('JSON Modify', function() {
 
     it('should fail when no "key" value provided', function(done) {
 
-      fakeFile.contents = new Buffer(JSON.stringify(dotObject, null, 2))
+      fakeFile.contents = Buffer.from(JSON.stringify(dotObject, null, 2))
 
       var output = jsonModify()
 
@@ -85,7 +85,7 @@ describe('JSON Modify', function() {
 
     it('should fail when no "value" value provided', function(done) {
 
-      fakeFile.contents = new Buffer(JSON.stringify(dotObject, null, 2))
+      fakeFile.contents = Buffer.from(JSON.stringify(dotObject, null, 2))
 
       var output = jsonModify({ key: 'test' })
 
