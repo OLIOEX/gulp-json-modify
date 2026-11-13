@@ -1,7 +1,7 @@
 {
   "name": "gulp-json-modify",
   "description": "Modify data on a JSON path using Gulp (gulpjs.com)",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "homepage": "http://github.com/olioex/gulp-json-modify",
   "repository": {
     "type": "git",
