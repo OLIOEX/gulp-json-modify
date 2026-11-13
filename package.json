@@ -7,7 +7,7 @@
   "author": "Lloyd Watkin <lloyd@olioex.com (http://olioex.com)",
   "main": "./index.js",
   "dependencies": {
-    "dot-object": "^1.2.0",
+    "dot-object": "^2.1.5",
     "plugin-error": "^0.1.2",
     "plugin-log": "^0.1.0",
     "through2": "^0.5.1"
