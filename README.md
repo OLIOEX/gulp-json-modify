@@ -69,11 +69,9 @@ The indentation passed to `JSON.stringify`. By default, the plugin detects the i
 
 Releases are published to npm by GitHub Actions ([`publish.yml`](.github/workflows/publish.yml)) using npm trusted publishing.
 
-1. Bump the version and tag it: `npm version patch` (or `minor` / `major`)
-2. Push the commit and tag: `git push --follow-tags`
-3. Create a GitHub Release from the new `vX.Y.Z` tag. Publishing the release triggers the npm publish.
+Create a GitHub Release with a new `vX.Y.Z` tag (e.g. `v2.1.0`). Publishing the release triggers the npm publish.
 
-The workflow fails if the release tag does not match the version in `package.json`.
+The workflow sets the `package.json` version from the release tag before publishing, so there is no need to bump the version by hand. Tags that are not exactly `vX.Y.Z` fail the workflow.
 
 ## Credits
 
