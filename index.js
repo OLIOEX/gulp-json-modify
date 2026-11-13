@@ -57,7 +57,7 @@ module.exports = function(opts) {
       json[opts.key] = opts.value
     }
 
-    file.contents = new Buffer(
+    file.contents = Buffer.from(
       JSON.stringify(
         json,
         null,
