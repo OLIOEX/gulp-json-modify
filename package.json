@@ -3,7 +3,10 @@
   "description": "Modify data on a JSON path using Gulp (gulpjs.com)",
   "version": "1.0.2",
   "homepage": "http://github.com/olioex/gulp-json-modify",
-  "repository": "git://github.com/olioex/gulp-json-modify.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OLIOEX/gulp-json-modify.git"
+  },
   "author": "Lloyd Watkin <lloyd@olioex.com (http://olioex.com)",
   "main": "./index.js",
   "dependencies": {
